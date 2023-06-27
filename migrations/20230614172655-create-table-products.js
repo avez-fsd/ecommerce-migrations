@@ -38,6 +38,14 @@ module.exports = {
           is_active: {
               allowNull: false,
               type: Sequelize.TINYINT(1),
+          },
+          created_at: {
+            type: Sequelize.DATE,
+            defaultValue: Sequelize.fn('NOW'),
+          },
+          updated_at: {
+              type: Sequelize.DATE,
+              defaultValue: Sequelize.fn('NOW'),
           }
       },{
         timestamps:true

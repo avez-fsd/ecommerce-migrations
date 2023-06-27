@@ -14,6 +14,14 @@ module.exports = {
           order_status_id: {
               allowNull: false,
               type: Sequelize.INTEGER(11).UNSIGNED,
+          },
+          created_at: {
+            type: Sequelize.DATE,
+            defaultValue: Sequelize.fn('NOW'),
+          },
+          updated_at: {
+              type: Sequelize.DATE,
+              defaultValue: Sequelize.fn('NOW'),
           }
       },{
         timestamps:true

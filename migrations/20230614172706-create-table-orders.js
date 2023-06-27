@@ -30,9 +30,18 @@ module.exports = {
           payment_id: {
               allowNull: true,
               type: Sequelize.INTEGER(11).UNSIGNED,
+          },
+          created_at: {
+            type: Sequelize.DATE,
+            defaultValue: Sequelize.fn('NOW'),
+          },
+          updated_at: {
+              type: Sequelize.DATE,
+              defaultValue: Sequelize.fn('NOW'),
           }
       },{
-        timestamps:true
+        timestamps:true,
+        initialAutoIncrement: 9000000
       })
       .then((_) => {
         queryInterface.addConstraint(

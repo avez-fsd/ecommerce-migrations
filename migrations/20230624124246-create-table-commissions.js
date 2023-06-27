@@ -10,6 +10,14 @@ module.exports = {
           commission_percentage: {
             allowNull: false,
             type: Sequelize.INTEGER(3).UNSIGNED,
+          },
+          created_at: {
+            type: Sequelize.DATE,
+            defaultValue: Sequelize.fn('NOW'),
+          },
+          updated_at: {
+              type: Sequelize.DATE,
+              defaultValue: Sequelize.fn('NOW'),
           }
       },{
         timestamps:true
