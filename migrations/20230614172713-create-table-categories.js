@@ -1,6 +1,6 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
-      return queryInterface.createTable('orders', {
+      return queryInterface.createTable('categories', {
           id: {
               allowNull: false,
               autoIncrement: true,
@@ -22,11 +22,6 @@ module.exports = {
       },{
         timestamps:true
       })
-      .then((_) => {
-          queryInterface.addIndex('orders', ['order_no'], {
-              name: 'order_no_idx',
-          });
-      });
   },
 
   async down(queryInterface, Sequelize) {

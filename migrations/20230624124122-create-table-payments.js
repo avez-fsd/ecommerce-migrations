@@ -9,7 +9,7 @@ module.exports = {
           },
           order_no: {
               allowNull: false,
-              type: Sequelize.INTEGER(11).UNSIGNED,
+              type: Sequelize.STRING,
           },
           user_id: {
               allowNull: false,

@@ -28,7 +28,8 @@ Status:
 5. Ready to pickup
 6. Shipped
 7. Out for delivery
-8. Full filled
+8. Delivered
+9. Full filled
 
 Order Status Log:
 
