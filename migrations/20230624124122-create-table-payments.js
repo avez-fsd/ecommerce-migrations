@@ -7,9 +7,9 @@ module.exports = {
               primaryKey: true,
               type: Sequelize.INTEGER(11).UNSIGNED,
           },
-          order_no: {
+          parent_order_id: {
               allowNull: false,
-              type: Sequelize.STRING,
+              type: Sequelize.INTEGER(11).UNSIGNED,
           },
           user_id: {
               allowNull: false,

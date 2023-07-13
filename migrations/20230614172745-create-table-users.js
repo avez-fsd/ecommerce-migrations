@@ -1,6 +1,6 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
-      return queryInterface.createTable('orders', {
+      return queryInterface.createTable('users', {
           id: {
               allowNull: false,
               autoIncrement: true,
@@ -14,6 +14,7 @@ module.exports = {
           email: {
               allowNull: false,
               type: Sequelize.STRING,
+              unique: true
           },
           password: {
               allowNull: false,
@@ -33,6 +34,6 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-      return queryInterface.dropTable('orders');
+      return queryInterface.dropTable('users');
   },
 };
