@@ -1,3 +1,5 @@
+const { DataTypes } = require("sequelize");
+
 module.exports = {
   async up(queryInterface, Sequelize) {
       return queryInterface.createTable('order_details', {
@@ -20,6 +22,10 @@ module.exports = {
               type: Sequelize.INTEGER(11).UNSIGNED,
           },
           product_id: {
+              allowNull: false,
+              type: Sequelize.INTEGER(11).UNSIGNED,
+          },
+          product_variant_id: {
               allowNull: false,
               type: Sequelize.INTEGER(11).UNSIGNED,
           },
@@ -77,9 +83,9 @@ module.exports = {
               allowNull: false,
               type: Sequelize.STRING,
           },
-          order_status_id: {
+          status: {
               allowNull: false,
-              type: Sequelize.INTEGER(11).UNSIGNED,
+              type: DataTypes.ENUM('NOT_CONFIRMED', 'CONFIRMED', 'CANCELLED', 'AUTO_CANCELLED', 'READY_TO_PICKUP', 'SHIPPED', 'OUT_FOR_DELIVERY', 'DELIVERED', 'FULL_FILLED')
           },
           created_at: {
             type: Sequelize.DATE,
@@ -102,9 +108,6 @@ module.exports = {
             type: 'unique',
           },
         );
-          queryInterface.addIndex('order_details', ['order_status_id'], {
-              name: 'order_status_id_idx',
-          });
       });
   },
 

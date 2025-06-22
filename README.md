@@ -8,6 +8,13 @@ npx sequelize-cli migration:generate --name <file name>
 ```
 npx sequelize-cli db:migrate --config=config/config.json --env=[development|staging|uat|production => default: development]
 ```
+3. Create seed file
+
+npx sequelize-cli seed:generate --name demo-user
+
+
+npx sequelize-cli db:seed:all
+
 Orders: 
 
 Id, order_no, total_amount, payment_id, total_delivery_fee, user_id, created_at, updated_at

@@ -1,54 +1,69 @@
 const { DataTypes } = require("sequelize");
-
 module.exports = {
   async up(queryInterface, Sequelize) {
-      return queryInterface.createTable('payments', {
+      return queryInterface.createTable('product_variants', {
           id: {
               allowNull: false,
               autoIncrement: true,
               primaryKey: true,
               type: Sequelize.INTEGER(11).UNSIGNED,
           },
-          parent_order_no: {
+
+          product_id: {
               allowNull: false,
               type: Sequelize.INTEGER(11).UNSIGNED,
           },
-          user_id: {
+
+          name: {
+            allowNull: false,
+            type: Sequelize.STRING,
+          },
+
+          color_id: {
+            allowNull: false,
+            type: Sequelize.INTEGER(11).UNSIGNED,
+          },
+          
+          size_id: {
+            allowNull: false,
+            type: Sequelize.INTEGER(11).UNSIGNED,
+          },
+
+          mrp: {
+              allowNull: false,
+              type: Sequelize.DECIMAL(12, 2),
+          },
+
+          selling_price: {
+              allowNull: false,
+              type: Sequelize.DECIMAL(12, 2),
+          },
+
+          discount: {
+              allowNull: false,
+              type: Sequelize.DECIMAL(12, 2),
+          },
+
+          weight: {
+              allowNull: false,
+              type: Sequelize.DECIMAL(12, 2),
+          },
+
+          stock: {
               allowNull: false,
               type: Sequelize.INTEGER(11).UNSIGNED,
           },
-          payment_type: {
+
+          is_active: {
               allowNull: false,
-              type: Sequelize.STRING,
+              type: Sequelize.TINYINT(1),
           },
-          payment_reference_id: {
-              allowNull: false,
-              type: Sequelize.STRING,
-          },
-          amount: {
-              allowNull: false,
-              type: Sequelize.DECIMAL(12, 2),
-          },
-          commission_percentage: {
-              allowNull: false,
-              type: Sequelize.DECIMAL(12, 2),
-          },
-          platform_commission: {
-              allowNull: false,
-              type: Sequelize.DECIMAL(12, 2),
-          },
-          transfer_amount: {
-              allowNull: false,
-              type: Sequelize.DECIMAL(12, 2),
-          },
-          status: {
-              allowNull: false,
-              type: DataTypes.ENUM('SUCCESS', 'PENDING', 'FAILED', 'CANCELLED')
-          },
+
           created_at: {
             type: Sequelize.DATE,
             defaultValue: Sequelize.fn('NOW'),
           },
+
           updated_at: {
               type: Sequelize.DATE,
               defaultValue: Sequelize.fn('NOW'),
@@ -56,9 +71,12 @@ module.exports = {
       },{
         timestamps:true
       })
+      .then((_) => {
+
+      });
   },
 
   async down(queryInterface, Sequelize) {
-      return queryInterface.dropTable('payments');
+      return queryInterface.dropTable('product_variants');
   },
 };

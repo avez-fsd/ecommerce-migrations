@@ -1,20 +1,28 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
-      return queryInterface.createTable('order_statuses', {
+      return queryInterface.createTable('colors', {
           id: {
               allowNull: false,
               autoIncrement: true,
               primaryKey: true,
               type: Sequelize.INTEGER(11).UNSIGNED,
           },
-          status: {
+
+          name: {
               allowNull: false,
               type: Sequelize.STRING,
           },
+
+          hex_value: {
+              allowNull: false,
+              type: Sequelize.STRING,
+          },
+
           created_at: {
             type: Sequelize.DATE,
             defaultValue: Sequelize.fn('NOW'),
           },
+
           updated_at: {
               type: Sequelize.DATE,
               defaultValue: Sequelize.fn('NOW'),
@@ -25,6 +33,6 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-      return queryInterface.dropTable('order_statuses');
+      return queryInterface.dropTable('colors');
   },
 };

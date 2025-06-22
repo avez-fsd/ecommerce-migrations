@@ -1,6 +1,6 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
-      return queryInterface.createTable('categories', {
+      return queryInterface.createTable('images', {
           id: {
               allowNull: false,
               autoIncrement: true,
@@ -8,39 +8,19 @@ module.exports = {
               type: Sequelize.INTEGER(11).UNSIGNED,
           },
 
-          name: {
+          sku: {
               allowNull: false,
               type: Sequelize.STRING,
           },
 
-          parent_category_id: {
-              allowNull: true,
-              type: Sequelize.INTEGER(11).UNSIGNED,
-          },
-
-          slug: {
+          thumbnail: {
               allowNull: false,
-              type: Sequelize.STRING,
-          },
-          
-          meta_title: {
-              allowNull: true,
-              type: Sequelize.STRING,
+              type: Sequelize.INTEGER(2).UNSIGNED,
           },
 
-          meta_desc: {
-              allowNull: true,
-              type: Sequelize.STRING,
-          },
-
-          image_url: {
-              allowNull: true,
-              type: Sequelize.STRING,
-          },
-
-          is_active: {
+          images: {
               allowNull: false,
-              type: Sequelize.BOOLEAN,
+              type: Sequelize.JSON,
           },
 
           created_at: {
@@ -58,6 +38,6 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-      return queryInterface.dropTable('categories');
+      return queryInterface.dropTable('images');
   },
 };

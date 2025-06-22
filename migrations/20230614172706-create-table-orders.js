@@ -1,3 +1,5 @@
+const { DataTypes } = require("sequelize");
+
 module.exports = {
   async up(queryInterface, Sequelize) {
       return queryInterface.createTable('orders', {
@@ -8,7 +10,7 @@ module.exports = {
               type: Sequelize.INTEGER(11).UNSIGNED,
           },
           order_no: {
-              allowNull: false,
+              allowNull: true,
               type: Sequelize.STRING,
           },
           user_id: {
@@ -23,9 +25,9 @@ module.exports = {
               allowNull: true,
               type: Sequelize.DECIMAL(12, 2),
           },
-          order_status_id: {
+          status: {
               allowNull: false,
-              type: Sequelize.INTEGER(11).UNSIGNED,
+              type: DataTypes.ENUM('NOT_CONFIRMED', 'CONFIRMED', 'CANCELLED', 'AUTO_CANCELLED', 'READY_TO_PICKUP', 'SHIPPED', 'OUT_FOR_DELIVERY', 'DELIVERED', 'FULL_FILLED')
           },
           payment_id: {
               allowNull: true,

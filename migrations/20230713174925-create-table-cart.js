@@ -1,15 +1,19 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
-      return queryInterface.createTable('payment_statuses', {
+      return queryInterface.createTable('carts', {
           id: {
               allowNull: false,
               autoIncrement: true,
               primaryKey: true,
               type: Sequelize.INTEGER(11).UNSIGNED,
           },
-          status: {
+          user_id: {
               allowNull: false,
-              type: Sequelize.STRING,
+              type: Sequelize.INTEGER(11).UNSIGNED,
+          },
+          coupon_id: {
+              allowNull: true,
+              type: Sequelize.INTEGER(11).UNSIGNED,
           },
           created_at: {
             type: Sequelize.DATE,
@@ -25,6 +29,6 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-      return queryInterface.dropTable('payment_statuses');
+      return queryInterface.dropTable('users');
   },
 };

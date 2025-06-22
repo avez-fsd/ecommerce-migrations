@@ -1,6 +1,6 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
-      return queryInterface.createTable('products', {
+      return queryInterface.createTable('payment_gateway_config', {
           id: {
               allowNull: false,
               autoIncrement: true,
@@ -11,33 +11,17 @@ module.exports = {
               allowNull: false,
               type: Sequelize.STRING,
           },
-          description: {
+          code: {
               allowNull: false,
               type: Sequelize.STRING,
           },
-          mrp: {
+          metadata: {
               allowNull: false,
-              type: Sequelize.DECIMAL(12, 2),
-          },
-          selling_price: {
-              allowNull: false,
-              type: Sequelize.DECIMAL(12, 2),
-          },
-          discount: {
-              allowNull: false,
-              type: Sequelize.DECIMAL(12, 2),
-          },
-          weight: {
-              allowNull: false,
-              type: Sequelize.DECIMAL(12, 2),
-          },
-          stock: {
-              allowNull: false,
-              type: Sequelize.INTEGER(11).UNSIGNED,
+              type: Sequelize.JSON,
           },
           is_active: {
               allowNull: false,
-              type: Sequelize.TINYINT(1),
+              type: Sequelize.INTEGER(11).UNSIGNED,
           },
           created_at: {
             type: Sequelize.DATE,
@@ -50,11 +34,9 @@ module.exports = {
       },{
         timestamps:true
       })
-      .then((_) => {
-      });
   },
 
   async down(queryInterface, Sequelize) {
-      return queryInterface.dropTable('products');
+      return queryInterface.dropTable('users');
   },
 };

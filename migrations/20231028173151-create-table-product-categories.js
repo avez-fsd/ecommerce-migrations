@@ -1,48 +1,33 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
-      return queryInterface.createTable('products', {
+      return queryInterface.createTable('product_categories', {
           id: {
               allowNull: false,
               autoIncrement: true,
               primaryKey: true,
               type: Sequelize.INTEGER(11).UNSIGNED,
           },
-          name: {
+
+          product_id: {
               allowNull: false,
               type: Sequelize.STRING,
           },
-          description: {
-              allowNull: false,
-              type: Sequelize.STRING,
-          },
-          mrp: {
-              allowNull: false,
-              type: Sequelize.DECIMAL(12, 2),
-          },
-          selling_price: {
-              allowNull: false,
-              type: Sequelize.DECIMAL(12, 2),
-          },
-          discount: {
-              allowNull: false,
-              type: Sequelize.DECIMAL(12, 2),
-          },
-          weight: {
-              allowNull: false,
-              type: Sequelize.DECIMAL(12, 2),
-          },
-          stock: {
+
+          category_id: {
               allowNull: false,
               type: Sequelize.INTEGER(11).UNSIGNED,
           },
+          
           is_active: {
               allowNull: false,
-              type: Sequelize.TINYINT(1),
+              type: Sequelize.BOOLEAN,
           },
+
           created_at: {
             type: Sequelize.DATE,
             defaultValue: Sequelize.fn('NOW'),
           },
+
           updated_at: {
               type: Sequelize.DATE,
               defaultValue: Sequelize.fn('NOW'),
@@ -50,11 +35,9 @@ module.exports = {
       },{
         timestamps:true
       })
-      .then((_) => {
-      });
   },
 
   async down(queryInterface, Sequelize) {
-      return queryInterface.dropTable('products');
+      return queryInterface.dropTable('product_categories');
   },
 };
